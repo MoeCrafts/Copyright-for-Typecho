@@ -1,4 +1,4 @@
-# Copyright v0.9.3 for Typecho
+# Copyright 0.9.3 for Typecho 1.1
 此插件修改并修复Bug自 [Yves-X/Copyright-for-Typecho](https://github.com/Yves-X/Copyright-for-Typecho)
 
 这是一个 [Typecho](https://github.com/typecho/typecho) 插件，利用自定义字段功能灵活地在文章或独立页面尾部显示版权小尾巴。
@@ -16,6 +16,7 @@
 1. 下载插件
 1. 打开 Typecho 根目录
 1. 解压至 ./usr/plugins/
+1. 将目录重命名为`Copyright`
 
 你也可以：
 
@@ -23,6 +24,7 @@
 # Initailly open the root document of your Typecho, then
 cd usr/plugins/
 git clone https://github.com/YKilin/Copyright-for-Typecho.git
+mv Copyright-for-Typecho Copyright
 ```
 
 ## 启用
