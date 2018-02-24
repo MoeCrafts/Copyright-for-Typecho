@@ -1,27 +1,28 @@
-# Copyright for Typecho
+# Copyright v0.9.3 for Typecho
+此插件修改并修复Bug自 [Yves-X/Copyright-for-Typecho](https://github.com/Yves-X/Copyright-for-Typecho)
 
 这是一个 [Typecho](https://github.com/typecho/typecho) 插件，利用自定义字段功能灵活地在文章或独立页面尾部显示版权小尾巴。
 
-Just like this:
+就像这样：
 
-> 版权属于：Yves X
-
-> 原文链接： https://github.com/Yves-X/Copyright-for-Typecho
-
+> 版权声明：本文为原创文章，版权归 xxx 所有。
+>
+> 原文链接：https://github.com/YKilin/Copyright-for-Typecho
+>
 > 转载时须注明出处及本声明
 
 ## 安装
 
-0. 下载插件
-0. 打开 Typecho 根目录
-0. 解压至 ./usr/plugins/
+1. 下载插件
+1. 打开 Typecho 根目录
+1. 解压至 ./usr/plugins/
 
-You can also:
+你也可以：
 
 ```bash
 # Initailly open the root document of your Typecho, then
-cd ./usr/plugins/
-git clone https://github.com/Yves-X/Copyright-for-Typecho.git
+cd usr/plugins/
+git clone https://github.com/YKilin/Copyright-for-Typecho.git
 ```
 
 ## 启用
@@ -39,8 +40,8 @@ git clone https://github.com/Yves-X/Copyright-for-Typecho.git
 | 字段 |类型|说明|示例|
 |:---:|:---:|:----|:----|
 |switch|整数|版权信息的开关|1|
-|author|字符|版权作者姓名|Yves X|
-|url|字符|原（本）文链接|https://github.com/Yves-X/Copyright-for-Typecho|
+|author|字符|版权作者姓名|神代綺凜|
+|url|字符|原文链接（当你的文章是转载的时候可以通过这个设置原文链接）|https://github.com/YKilin/Copyright-for-Typecho|
 |notice|字符|版权声明|转载时须注明出处及本声明|
 
 你可以把任意字段的值设定为**整数0**来关闭它。
@@ -67,9 +68,9 @@ git clone https://github.com/Yves-X/Copyright-for-Typecho.git
 
 现在你要对某篇特定的文章显示版权信息，有以下要求：
 
-0. 不显示作者
-0. 显示原文链接
-0. 声明为“禁止转载”
+1. 不显示作者
+1. 显示原文链接
+1. 声明为“禁止转载”
 
 你只需用自定义字段功能，将于全局设置不符的选项覆盖。在此处，你只需填写三条字段：
 
@@ -82,5 +83,5 @@ git clone https://github.com/Yves-X/Copyright-for-Typecho.git
 显示效果为：
 
 > 原文链接：https://github.com/Yves-X/Copyright-for-Typecho
-
+>
 > 禁止转载
