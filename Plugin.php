@@ -2,18 +2,18 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
- * Copyright for Typecho
+ * Copyright for Typecho (Modified by <a href="https://lolico.moe" target="_blank">神代綺凜</a>)
  *
  * @package Copyright
  * @author  Yves X
- * @version 0.9.2
- * @link https://github.com/Yves-X/Copyright-for-Typecho
+ * @version 0.9.3
+ * @link https://github.com/YKilin/Copyright-for-Typecho
  */
 
 class Copyright_Plugin implements Typecho_Plugin_Interface {
 	/**
 	 * 激活插件方法,如果激活失败,直接抛出异常
-	 * 
+	 *
 	 * @access public
 	 * @return void
 	 * @throws Typecho_Plugin_Exception
@@ -24,7 +24,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
 
     /**
      * 禁用插件方法,如果禁用失败,直接抛出异常
-     * 
+     *
      * @static
      * @access public
      * @return void
@@ -34,7 +34,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
 
     /**
      * 获取插件配置面板
-     * 
+     *
      * @access public
      * @param Typecho_Widget_Helper_Form $form 配置面板
      * @return void
@@ -56,7 +56,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
 
     /**
      * 个人用户的配置面板
-     * 
+     *
      * @access public
      * @param Typecho_Widget_Helper_Form $form
      * @return void
@@ -65,7 +65,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
 
     /**
      * 插件实现方法
-     * 
+     *
      * @access public
      * @return void
      */
@@ -79,7 +79,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
         }
 
         if ($widget->parameter->type == 'post') {
-        	if (isset($widget->fields->switch)) {
+        	if ($widget->fields->switch != '') {
         		if (!$widget->fields->switch) {
         			return $content;
         		}
@@ -95,7 +95,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
         }
 
         if ($widget->parameter->type == 'page') {
-        	if (isset($widget->fields->switch)) {
+        	if ($widget->fields->switch != '') {
         		if (!$widget->fields->switch) {
         			return $content;
         		}
@@ -118,20 +118,20 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
         $t_url = "";
         $t_notice  = "";
 	    
-    	if (isset($widget->fields->author)) {
+    	if ($widget->fields->author != '') {
     		$author = $widget->fields->author;
             if($author) {
     		  $t_author = '<p class="content-copyright">版权属于：' . $author . '</p>';
             }
     	}
     	else if ($author = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->author) {
-    		$t_author = '<p class="content-copyright">版权属于：' . $author . '</p>';
+    		$t_author = '<p class="content-copyright">版权声明：本文为原创文章，版权归 <a href="' . Helper::options()->siteUrl . '">' . $author . '</a> 所有。</p>';
     	}
 
-     	if (isset($widget->fields->url)) {
+     	if ($widget->fields->url != '') {
     		$url = $widget->fields->url;
             if($url) {
-    			$t_url = '<p class="content-copyright">原文链接：<a class="content-copyright" href="' . $url . '">' . $url . '</a></p>';
+    			$t_url = '<p class="content-copyright">原文链接：<a class="content-copyright" target="_blank" href="' . $url . '">' . $url . '</a></p>';
             }
     	}
     	else if ($showURL = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->showURL) {
@@ -139,7 +139,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
     		$t_url = '<p class="content-copyright">本文链接：<a class="content-copyright" href="' . $url . '">' . $url . '</a></p>';
     	}
 
-    	if (isset($widget->fields->notice)) {
+    	if ($widget->fields->notice != '') {
     		$notice = $widget->fields->notice;
             if($notice) {
     		  $t_notice = '<p class="content-copyright">' . $notice .'</p>';
@@ -148,6 +148,6 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
     	else if ($notice = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->notice) {
     		$t_notice = '<p class="content-copyright">' . $notice . '</p>';
     	}
-        return $content . '<hr class="content-copyright" /><blockquote class="content-copyright">' . $t_author . $t_url . $t_notice . '</blockquote>';
+        return $content . '<hr class="content-copyright" style="margin-top:50px" /><blockquote class="content-copyright" style="font-style:normal">' . $t_author . $t_url . $t_notice . '</blockquote>';
     }
 }
